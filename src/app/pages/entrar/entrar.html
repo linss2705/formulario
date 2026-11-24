@@ -1,0 +1,24 @@
+<section class="pagina-acesso">
+  <h2>Entrar</h2>
+  <p class="descricao">Use <strong>emilys</strong> e <strong>emilyspass</strong> para testar.</p>
+
+  <form (ngSubmit)="entrar()">
+    <div class="campo">
+      <label for="usuario">Usuário</label>
+      <input id="usuario" name="usuario" [(ngModel)]="usuario" autocomplete="username" required>
+    </div>
+
+    <div class="campo">
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" [(ngModel)]="senha" autocomplete="current-password" required>
+    </div>
+
+    @if (erro()) {
+      <p class="erro" role="alert">{{ erro() }}</p>
+    }
+
+    <button type="submit" [disabled]="carregando()">
+      {{ carregando() ? 'Entrando...' : 'Entrar' }}
+    </button>
+  </form>
+</section>

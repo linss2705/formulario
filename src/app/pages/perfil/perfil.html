@@ -1,0 +1,29 @@
+<section class="pagina-perfil">
+  @if (perfil(); as p) {
+    <h2>Olá, {{ p.firstName }} {{ p.lastName }}</h2>
+    <p>{{ p.email }}</p>
+  } @else {
+    <h2>Carregando perfil...</h2>
+  }
+
+  <div class="card-cep">
+    <h3>Buscar CEP</h3>
+    <form (ngSubmit)="buscarCep()">
+      <input name="cep" [(ngModel)]="cep" placeholder="40140-110">
+      <button type="submit">Buscar</button>
+    </form>
+
+    @if (erroCep()) {
+      <p class="erro" role="alert">{{ erroCep() }}</p>
+    }
+
+    @if (endereco(); as endereco) {
+      <address>
+        {{ endereco.rua }}<br>
+        {{ endereco.bairro }} — {{ endereco.cidade }}/{{ endereco.uf }}
+      </address>
+    }
+  </div>
+
+  <button type="button" class="botao-sair" (click)="sair()">Sair</button>
+</section>

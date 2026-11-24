@@ -1,0 +1,8 @@
+h2 { margin-bottom: 0.25rem; }
+.card-cep { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid #e2e8f0; border-radius: 0.75rem; }
+.card-cep form { display: flex; gap: 0.75rem; margin: 0.75rem 0; }
+.card-cep input { flex: 1; min-width: 0; padding: 0.65rem 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.55rem; }
+button { border: 0; border-radius: 999px; padding: 0.65rem 1.15rem; background: #2563eb; color: #fff; font-weight: 800; cursor: pointer; }
+.botao-sair { background: #dc2626; }
+.erro { color: #dc2626; font-weight: 700; }
+address { margin-top: 0.75rem; color: var(--text-muted); font-style: normal; }

@@ -6,4 +6,7 @@ export interface Pessoa {
   telefone?: string;
   vinculo?: string;
   ativo?: boolean;
+  formaPagamento?: FormaPagamento;
 }
+
+import type { FormaPagamento } from '../pipes/forma-pagamento-pipe';

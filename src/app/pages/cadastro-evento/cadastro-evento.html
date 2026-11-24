@@ -98,8 +98,9 @@
     @for (eventoSalvo of eventos; track eventoSalvo.id) {
       <article class="evento-item">
         <strong>#{{ eventoSalvo.id }} - {{ eventoSalvo.titulo }}</strong>
-        <p>{{ eventoSalvo.data }} | {{ eventoSalvo.local }}</p>
-        <p>{{ eventoSalvo.emailResponsavel }} | {{ eventoSalvo.vagas }} vagas</p>
+        <p>{{ eventoSalvo.data | date:'dd/MM/yyyy' }} | {{ eventoSalvo.local | uppercase }}</p>
+        <p>Detalhe: {{ eventoSalvo.data | date:"EEEE, d 'de' MMMM" }} | {{ eventoSalvo.vagas | number:'1.0-0' }} vagas | {{ eventoSalvo.data | diasPara }}</p>
+        <p>{{ eventoSalvo.emailResponsavel }}</p>
       </article>
     } @empty {
       <p class="lista-vazia">Nenhum evento cadastrado ainda.</p>

@@ -126,3 +126,30 @@ h2 {
   font-size: 0.82rem;
   line-height: 1.4;
 }
+
+.identidade-pessoa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.avatar-iniciais {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.evento-info {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}

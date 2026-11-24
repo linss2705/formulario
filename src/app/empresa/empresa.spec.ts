@@ -20,7 +20,7 @@ describe('Empresa', () => {
   });
 
   it('should validate empty form and return false', () => {
-    expect(component.validarFormulario()).toBeFalse();
+    expect(component.validarFormulario()).toBe(false);
     expect(component.erros.nome).toBe('O nome da empresa é obrigatório.');
   });
 });

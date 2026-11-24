@@ -1,5 +1,7 @@
+<h2>{{ evento.titulo }}</h2>
+
 <div class="pessoas-wrapper">
-  <h2>Lista de Pessoas e Validações</h2>
+  <p class="evento-info">{{ evento.data | date:'dd/MM/yyyy' }} · {{ evento.data | diasPara }}</p>
 
   @if (avisosLista.length > 0) {
     <div class="alerta-ids">
@@ -13,7 +15,10 @@
     @for (item of resultados; track $index) {
       <div class="pessoa-card" [class.invalido]="item.erros.length > 0">
         <div class="card-header">
-          <h3>{{ item.pessoa.nome }}</h3>
+          <div class="identidade-pessoa">
+            <span class="avatar-iniciais">{{ item.pessoa.nome | iniciais }}</span>
+            <h3>{{ item.pessoa.nome }}</h3>
+          </div>
           <span class="badge" [class.badge-erro]="item.erros.length > 0" [class.badge-ok]="item.erros.length === 0">
             {{ item.erros.length > 0 ? 'Inválido' : 'Válido' }}
           </span>
@@ -23,9 +28,10 @@
           <p><strong>ID:</strong> {{ item.pessoa.id }}</p>
           <p><strong>Curso:</strong> {{ item.pessoa.curso }}</p>
           <p><strong>E-mail:</strong> {{ item.pessoa.email }}</p>
-          <p><strong>Telefone:</strong> {{ item.pessoa.telefone || '(Não informado)' }}</p>
+          <p><strong>Telefone:</strong> {{ item.pessoa.telefone ? (item.pessoa.telefone | telefone) : '(Não informado)' }}</p>
           <p><strong>Vínculo:</strong> {{ item.pessoa.vinculo }}</p>
           <p><strong>Status:</strong> {{ item.pessoa.ativo ? 'Ativo' : 'Inativo' }}</p>
+          <p><strong>Pagamento:</strong> {{ item.pessoa.formaPagamento | formaPagamento }}</p>
         </div>
 
         @if (item.erros.length > 0) {

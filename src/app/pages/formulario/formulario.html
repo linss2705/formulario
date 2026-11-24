@@ -1,0 +1,117 @@
+<section class="formulario">
+  <header class="formulario-cabecalho">
+    <p class="formulario-etiqueta">Cadastro institucional</p>
+    <h2>Formulário</h2>
+  </header>
+
+  @if (enviado) {
+    <div class="mensagem-sucesso" role="status">
+      Cadastro enviado com sucesso.
+    </div>
+  }
+
+  <form #form="ngForm" (ngSubmit)="enviar(form)" novalidate>
+    <fieldset>
+      <legend>Identificação</legend>
+
+      <div class="campo campo-largo">
+        <label for="nomeCompleto">Nome completo *</label>
+        <input id="nomeCompleto" name="nomeCompleto" type="text" [(ngModel)]="dados.nomeCompleto" required>
+      </div>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="dataNascimento">Data de nascimento *</label>
+          <input id="dataNascimento" name="dataNascimento" type="date" [(ngModel)]="dados.dataNascimento" required>
+        </div>
+
+        <div class="campo">
+          <label for="genero">Gênero *</label>
+          <select id="genero" name="genero" [(ngModel)]="dados.genero" required>
+            <option value="" disabled>Selecione</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Não binário">Não binário</option>
+            <option value="Prefiro não informar">Prefiro não informar</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Informações de contato</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" [(ngModel)]="dados.email" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefone">Telefone *</label>
+          <input id="telefone" name="telefone" type="tel" placeholder="(71) 99999-9999" [(ngModel)]="dados.telefone" required>
+        </div>
+      </div>
+
+      <div class="campo campo-largo">
+        <label for="cep">CEP *</label>
+        <input id="cep" name="cep" type="text" inputmode="numeric" maxlength="9" placeholder="00000-000" [(ngModel)]="dados.cep" required>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Vínculo acadêmico</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="vinculoAcademico">Vínculo *</label>
+          <select id="vinculoAcademico" name="vinculoAcademico" [(ngModel)]="dados.vinculoAcademico" required>
+            <option value="" disabled>Selecione</option>
+            <option value="Aluno">Aluno</option>
+            <option value="Professor">Professor</option>
+            <option value="Convidado">Convidado</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="curso">Curso *</label>
+          <input id="curso" name="curso" type="text" placeholder="Ex.: Sistemas de Informação" [(ngModel)]="dados.curso" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Acesso e preferências</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="senha">Senha *</label>
+          <input id="senha" name="senha" type="password" minlength="6" [(ngModel)]="dados.senha" (input)="verificarSenhas()" required>
+        </div>
+
+        <div class="campo">
+          <label for="repetirSenha">Repetir senha *</label>
+          <input id="repetirSenha" name="repetirSenha" type="password" [(ngModel)]="dados.repetirSenha" (input)="verificarSenhas()" required>
+          @if (senhasDiferentes) {
+            <small class="erro">As senhas não coincidem.</small>
+          }
+        </div>
+      </div>
+
+      <label class="preferencia">
+        <input name="receberEmails" type="checkbox" [(ngModel)]="dados.receberEmails">
+        <span>Desejo receber e-mails da instituição</span>
+      </label>
+    </fieldset>
+
+    <div class="campo campo-largo">
+      <label for="observacoes">Observações <span>(opcional)</span></label>
+      <textarea id="observacoes" name="observacoes" rows="4" [(ngModel)]="dados.observacoes" placeholder="Informe qualquer observação adicional"></textarea>
+    </div>
+
+    <div class="formulario-acoes">
+      <button type="submit" [disabled]="senhasDiferentes">Enviar formulário</button>
+    </div>
+  </form>
+</section>

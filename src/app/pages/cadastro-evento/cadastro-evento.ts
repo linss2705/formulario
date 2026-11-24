@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, DecimalPipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DiasParaPipe } from '../../pipes/dias-para-pipe';
 import { Evento } from '../../models/evento';
 import {
   validarData,
@@ -15,7 +16,7 @@ type CampoEvento = 'titulo' | 'data' | 'local' | 'emailResponsavel' | 'vagas';
 @Component({
   selector: 'app-cadastro-evento',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DatePipe, UpperCasePipe, DecimalPipe, DiasParaPipe],
   templateUrl: './cadastro-evento.html',
   styleUrls: ['./cadastro-evento.css'],
 })

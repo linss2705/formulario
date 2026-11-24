@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { Pessoa as IPessoa } from './pessoa.model';
 import { validarPessoa, validarIdsUnicos } from './pessoa.validacao';
+import { IniciaisPipe } from '../pipes/iniciais-pipe';
+import { TelefonePipe } from '../pipes/telefone-pipe';
+import { DatePipe } from '@angular/common';
+import { DiasParaPipe } from '../pipes/dias-para-pipe';
+import { FormaPagamentoPipe } from '../pipes/forma-pagamento-pipe';
 
 @Component({
   selector: 'app-pessoa',
   templateUrl: './pessoa.html',
-  styleUrl: './pessoa.css'
+  styleUrl: './pessoa.css',
+  imports: [DatePipe, IniciaisPipe, TelefonePipe, FormaPagamentoPipe, DiasParaPipe]
 })
 export class Pessoa {
+  evento = {
+    titulo: 'Semana Acadêmica Unijorge',
+    data: '2026-11-20',
+  };
+
   pessoas: IPessoa[] = [
     {
       id: 1,
@@ -16,7 +27,8 @@ export class Pessoa {
       email: 'ana.souza@unijorge.edu.br',
       telefone: '71988887777',
       vinculo: 'aluno',
-      ativo: true
+      ativo: true,
+      formaPagamento: 'pix',
     },
     {
       id: 2,
@@ -25,7 +37,8 @@ export class Pessoa {
       email: 'bruno.lima@unijorge.edu.br',
       telefone: '71999998888',
       vinculo: 'aluno',
-      ativo: true
+      ativo: true,
+      formaPagamento: 'cartao'
     },
     {
       id: 3,
@@ -34,7 +47,8 @@ export class Pessoa {
       email: 'carla.dias@unijorge.edu.br',
       telefone: '7133334444',
       vinculo: 'professor',
-      ativo: true
+      ativo: true,
+      formaPagamento: 'boleto'
     },
     {
       id: 4,
@@ -42,7 +56,8 @@ export class Pessoa {
       curso: 'Engenharia de Computação',
       email: 'diego.castro@unijorge.edu.br',
       vinculo: 'aluno',
-      ativo: false
+      ativo: false,
+      formaPagamento: ''
     },
     {
       id: 1, // ID propositalmente repetido para o desafio de IDs únicos

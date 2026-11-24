@@ -6,7 +6,13 @@
       <a routerLink="/pessoa" routerLinkActive="active">Pessoa</a>
       <a routerLink="/empresa" routerLinkActive="active">Empresa</a>
       <a routerLink="/eventos/novo" routerLinkActive="active">Eventos</a>
+      <a routerLink="/formulario" routerLinkActive="active">Formulário</a>
+      <a routerLink="/entrar" routerLinkActive="active">Entrar</a>
+      <a routerLink="/perfil" routerLinkActive="active">Perfil</a>
     </nav>
+    <button type="button" class="botao-tema" (click)="alternarTema()" [attr.aria-label]="temaEscuro ? 'Ativar tema claro' : 'Ativar tema escuro'">
+      {{ temaEscuro ? '☀' : '☾' }}
+    </button>
   </header>
 
   <main class="app-content">
